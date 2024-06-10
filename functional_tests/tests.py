@@ -12,7 +12,7 @@ class NewVisitorTest(StaticLiveServerTestCase):
 
     def setUp(self):
         self.browser = webdriver.Chrome()
-        real_server = os.environ.get('REAL_SERVER') #(1)
+        real_server = '39.101.69.195' #(1)
         if real_server:
             self.live_server_url = 'http://' + real_server #(2)
 
@@ -118,7 +118,7 @@ class NewVisitorTest(StaticLiveServerTestCase):
         self.browser.get(self.live_server_url)
         self.browser.set_window_size(1024, 768)
 
-        # 她看到输入框居中显示
+        # 她看到输入框完美地居中显示
         inputbox = self.browser.find_element(By.ID, 'id_new_item')
         self.assertAlmostEqual(
             inputbox.location['x'] + inputbox.size['width'] / 2,
